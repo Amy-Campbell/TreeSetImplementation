@@ -32,46 +32,22 @@ public class TreeSet<E extends Comparable<E>> {
 
 	
 	public Iterator<E> iterator() {
-		//Iterator<E> it = new Iterator<>() {
-
-            //private int currentIndex = 0;
-
-            //@Override
-            //public boolean hasNext() {
-                //return currentIndex < size() && this[currentIndex] != null;
-            //}
-
-            //@Override
-            //public E next() {
-                //return arrayList[currentIndex++];
-            //}
-
-            //@Override
-            //public void remove() {
-                //throw new UnsupportedOperationException();
-            //}
-        //};
-        //return it;
 		return tree.iterator();
-	}
-
-	
-	public Object[] toArray() {
-		tree.inorder();
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	
 	public E[] toArray(E[] e) {
 		E[] array = (E[]) new Object[size()];
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<E> itr = iterator();
+		int position = 0;
+		while(itr.hasNext()) {
+			array[position] = itr.next();
+		}
+		return array;
 	}
 
 	
 	public boolean add(E e) {
-		// TODO Auto-generated method stub
 		return tree.insert(e);
 		
 	}

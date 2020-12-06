@@ -85,17 +85,19 @@ public class Main extends Application {
 		nodes.add(15);
 		nodes.add(3);
 		ps1.add(new Patient(9000111000l,"existing pt",0,0));
-		System.out.println(ps1.size());
 		
 		TreeSet<Integer> treeset2 = new TreeSet<>();
 		
 		treeset2.add(14);
 		
 		treeset2.addAll(nodes);
-		System.out.println(treeset2.size());
 		
 		ps1.toArray();
-		nodes.toArray();
+		Object[] nodeArray = treeset2.toArray();
+		
+		for (int i = 0; i<nodeArray.length;i++) {
+			System.out.println(nodeArray[i]);
+		}
 		
 		System.out.println(nodes.contains(13));
 		System.out.println(nodes.contains(2));
