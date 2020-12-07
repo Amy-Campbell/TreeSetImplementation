@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.TreeSet; // to be replaced by your own implementation of TreeSet
+// to be replaced by your own implementation of TreeSet
 
 /**
  * test cases related to the clear() method
