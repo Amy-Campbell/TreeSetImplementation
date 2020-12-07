@@ -121,8 +121,8 @@ class AVLTree<E extends Comparable<E>> implements Tree<E> {
 
 	  private AVLTreeNode<E> rotateLeftRight(AVLTreeNode<E> node) {
 		  AVLTreeNode<E> current;
-		  rotateLeft(node.getRight());
-			current = rotateLeft(node);
+		  rotateLeft(node.getLeft());
+			current = rotateRight(node);
 			return(current);
 	  }
 

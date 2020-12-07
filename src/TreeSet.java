@@ -1,10 +1,8 @@
 
 
-
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 
 public class TreeSet<E extends Comparable<E>> {
 	
@@ -34,20 +32,47 @@ public class TreeSet<E extends Comparable<E>> {
 		
 	}
 
-	
 	public Iterator<E> iterator() {
 		return tree.iterator();
 	}
+	
+	
 
 	
-	public E[] toArray(E[] a) {
-		E[] array = (E[]) new Object[size()];
+	public <E> E[] toArray(E[] a) {
+		if (isEmpty()) {
+			for (int i = 0; i<a.length; i++) {
+				a[i] = null;
+			}
+			return a;
+		}
+		else {
+			@SuppressWarnings("rawtypes")
+		    E[] outArr;
+		    outArr = (E[])Array.newInstance(tree.root.getClass(), size()); // create an array of generic type 
+		    
+		    
+			int position = 0;
+			Iterator itr = iterator();
+			while(itr.hasNext()) {
+				outArr[position] = (E) itr.next();
+			}
+		    return outArr;
+		}
+	}
+		
+	
+	
+	public Object[] toArray() {
+		Object[] outArr = new Object[size()];
 		Iterator<E> itr = iterator();
 		int position = 0;
 		while(itr.hasNext()) {
-			array[position] = itr.next();
+			outArr[position] = itr.next();
+			position += 1;
 		}
-		return array;
+		
+		return outArr;
 	}
 
 	
@@ -56,6 +81,7 @@ public class TreeSet<E extends Comparable<E>> {
 		
 	}
 
+	
 	//optional
 	
 	public boolean remove(E e) {
@@ -64,16 +90,20 @@ public class TreeSet<E extends Comparable<E>> {
 	}
 
 	
-	public boolean containsAll(Collection c) {
+	public boolean containsAll(Collection<?> c) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
 	public boolean addAll(Collection<? extends E> c) { 
-	    boolean modified = false;
-	    for (E e : c) if (add(e)) modified = true; 
-	    return modified;
+	    boolean added = false;
+	    for (E e : c) {
+	    	if (add(e)) {
+	    		added = true; 
+	    	}
+	    }
+	    return added;
 	}
 
 	//optional
@@ -84,6 +114,7 @@ public class TreeSet<E extends Comparable<E>> {
 	}
 
 	//optional
+	
 	
 	public boolean removeAll(Collection<?> c) {
 		return false;
