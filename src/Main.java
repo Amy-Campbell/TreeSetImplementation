@@ -100,6 +100,8 @@ public class Main extends Application {
 		}
 		
 		System.out.println(nodes.contains(13));
+		nodes.clear();
+		System.out.println(nodes.contains(13));
 		System.out.println(nodes.contains(2));
   }
 

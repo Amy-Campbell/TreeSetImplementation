@@ -25,8 +25,12 @@ public class TreeSet<E extends Comparable<E>> {
 	}
 
 	
-	public boolean contains(E e) {
-		return tree.search(e);
+	public boolean contains(Object o) {
+		if (isEmpty()) return false;
+		else if (tree.root.getClass().isInstance(o)) {
+			return tree.search((E)o);
+		}
+		else return false;
 		
 	}
 
@@ -36,7 +40,7 @@ public class TreeSet<E extends Comparable<E>> {
 	}
 
 	
-	public E[] toArray(E[] e) {
+	public E[] toArray(E[] a) {
 		E[] array = (E[]) new Object[size()];
 		Iterator<E> itr = iterator();
 		int position = 0;
@@ -81,15 +85,15 @@ public class TreeSet<E extends Comparable<E>> {
 
 	//optional
 	
-	public boolean removeAll(Collection c) {
-		// TODO Auto-generated method stub
+	public boolean removeAll(Collection<?> c) {
 		return false;
 	}
 
 	//optional
 	
 	public void clear() {
-		// TODO Auto-generated method stub
+		tree.clear();
+		
 		
 	}
 
