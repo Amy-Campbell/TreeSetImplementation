@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 import java.lang.reflect.Array;
 
-public class TreeSet<E extends Comparable<E>> {
+public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	
 	AVLTree<E> tree = new AVLTree<>();
 
@@ -26,21 +26,43 @@ public class TreeSet<E extends Comparable<E>> {
 		return size() <= 0;
 	}
 
+	
+	//passed all tests
 	//@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object o) {
 		boolean thisContainsAllOthers = true;
 		boolean otherContainsAllThis = true;
-		Iterator<E> itr = iterator();
-		while (itr.hasNext()){
+		//if (tree.root.getClass().isInstance(o)) {
+		TreeSet<E> testSet = new TreeSet<>();
+		
+		//check that they're the same class
+		if (o.getClass().isInstance(testSet)) {
+			
+			TreeSet<E> secondSet = (TreeSet<E>)o;
+			Iterator<E> itr = iterator();
+			Iterator<E> itr2 = secondSet.iterator();
+			
+			//check that they're the same size
+			if(this.size() == secondSet.size()) {
+				
+				//check that they contain all the same elements
+				while (itr.hasNext()) {
+					if (!secondSet.contains(itr.next())) {
+						otherContainsAllThis = false;
+					}
+				}
+			}
+			else {
+				return false; //not the same size
+			}
+			return otherContainsAllThis; //return all elements are the same
+			
 			
 		}
-		for (int i = 0; i< size(); i++) {
-		
+		else {
+			return false; //unequal types
 		}
-		
-		return this.equals(o);
-		
 	}
 	
 
@@ -59,9 +81,6 @@ public class TreeSet<E extends Comparable<E>> {
 		
 	}
 
-	public Iterator<E> iterator(){
-		return tree.iterator();
-	}
 	
 	
 
@@ -150,5 +169,63 @@ public class TreeSet<E extends Comparable<E>> {
 		
 		
 	}
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return new InorderIterator();
+	}
+	// Inner class InorderIterator
+		  private class InorderIterator implements java.util.Iterator<E> {
+		    // Store the elements in a list
+		    private java.util.ArrayList<E> list = new java.util.ArrayList<>();
+		    private int current = 0; // Point to the current element in list
+
+		    public InorderIterator() {
+		      inorder(); // Traverse binary tree and store elements in list
+		    }
+
+		    /** Inorder traversal from the root */
+		    private void inorder() {
+		      inorder(tree.root);
+		    }
+
+		    /** Inorder traversal from a subtree */
+		    private void inorder(AVLTreeNode<E> root) {
+		      if (root == null)
+		        return;
+		      inorder(root.getLeft());
+		      list.add(root.getElement());
+		      inorder(root.getRight());
+		    }
+
+		    /** More elements for traversing? */
+		    public boolean hasNext() {
+		      if (current < list.size())
+		        return true;
+
+		      return false;
+		    }
+
+		    /** Get the current element and move to the next */
+		    public E next() {
+		      return list.get(current++);
+		    }
+
+		    // Remove the element returned by the last next()
+		    public void remove() {
+		      if (current == 0) // next() has not been called yet
+		        throw new IllegalStateException();
+
+		      delete(list.get(--current));
+		      list.clear(); // Clear the list
+		      inorder(); // Rebuild the list
+		    }
+
+			private void delete(E e) {
+				TreeSet.this.remove(e);
+				
+			}
+		  }
 
 }
