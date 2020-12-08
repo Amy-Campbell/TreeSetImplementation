@@ -92,25 +92,25 @@ class AVLTree<E extends Comparable<E>> implements Tree<E> {
 		  while (current != null) {
 
 				if((current.getLeft() != null) && ((current.getBalanceNum()) <= (-2)) && (current.getLeft().getBalanceNum() == (1))) {
-					System.out.println("leftRight");
+					//System.out.println("leftRight");
 		    		current = rotateLeftRight(current);
 
 				}
 				else if(current.getRight() != null && (current.getBalanceNum() >= 2) && (current.getRight().getBalanceNum() == (-1))) {
-					System.out.println("Rightleft");
+					//System.out.println("Rightleft");
 
 					current = rotateRightLeft(current);
 					
 				}
 				
 				else if(current.getLeft() != null && (current.getBalanceNum() <= -2) && (current.getLeft().getBalanceNum() == (-1))) {
-					System.out.println("Right");
+					//System.out.println("Right");
 
 		    		current = rotateRight(current);
 
 				}
 				else if(current.getRight() != null && (current.getBalanceNum() >= 2) && (current.getRight().getBalanceNum() == (1))) {
-					System.out.println("left");
+					//System.out.println("left");
 		    		current = rotateLeft(current);
 
 				}
@@ -160,13 +160,13 @@ class AVLTree<E extends Comparable<E>> implements Tree<E> {
 		  else if(parent.getLeft() == node) {
 			  parent.setLeft(right);
 			  parent.setHightL(right.getMaxHight()+1);
-			  System.out.println(parent.getHightL()+" "+parent.getHightR());
+			  //System.out.println(parent.getHightL()+" "+parent.getHightR());
 
 		  }
 		  else if (parent.getRight() == node){
 			  parent.setRight(right);
 			  parent.setHightR(right.getMaxHight()+1);
-			  System.out.println(parent.getHightL()+" "+parent.getHightR());
+			  //System.out.println(parent.getHightL()+" "+parent.getHightR());
 
 		  } 
 		  return(right);
@@ -241,7 +241,7 @@ class AVLTree<E extends Comparable<E>> implements Tree<E> {
 	      return;
 	    postorder(root.getLeft());
 	    postorder(root.getRight());
-	    System.out.print(root.getElement() + " ");
+	    //System.out.print(root.getElement() + " ");
 	  }
 
 	  /** Preorder traversal from the root */
@@ -253,7 +253,7 @@ class AVLTree<E extends Comparable<E>> implements Tree<E> {
 	  protected void preorder(AVLTreeNode<E> root) {
 	    if (root == null)
 	      return;
-	    System.out.print(root.getElement() + " ");
+	    //System.out.print(root.getElement() + " ");
 	    preorder(root.getLeft());
 	    preorder(root.getRight());
 	  }

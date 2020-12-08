@@ -2,6 +2,9 @@
 
 import java.util.Collection;
 import java.util.Iterator;
+
+
+
 import java.lang.reflect.Array;
 
 public class TreeSet<E extends Comparable<E>> {
@@ -45,11 +48,6 @@ public class TreeSet<E extends Comparable<E>> {
 	//@SuppressWarnings("unchecked")
 	//passed all tests
 	public boolean contains(Object o) {
-		//if (isEmpty()) return false;
-		//else if (tree.root.getClass().isInstance(o)) {
-			//return tree.search((E)o);
-		//}
-		//else return false;
 		Object[] newArr = toArray();
 		boolean contained = false;
 		for (int i = 0; i<size(); i++) {
@@ -61,7 +59,7 @@ public class TreeSet<E extends Comparable<E>> {
 		
 	}
 
-	public Iterator<E> iterator() {
+	public Iterator<E> iterator(){
 		return tree.iterator();
 	}
 	
@@ -126,13 +124,6 @@ public class TreeSet<E extends Comparable<E>> {
 
 	
 	public boolean addAll(Collection<? extends E> c) { 
-	    //boolean added = false;
-	    //for (E e : c) {
-	    	//if (add(e)) {
-	    		//added = true; 
-	    	//}
-	    //}
-	    //return added;
 		
 		return false;
 	}
