@@ -7,12 +7,15 @@ import java.util.Iterator;
 
 import java.lang.reflect.Array;
 
-public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
+public class TreeSet<E extends Comparable<E>> extends AVLTree<E> implements Iterable<E>{
 	
 	AVLTree<E> tree = new AVLTree<>();
 
 	public TreeSet() {
 		super();
+	}
+	public TreeSet(E[] objects) {
+		super(objects);
 	}
 
 	//passed all tests
@@ -85,6 +88,7 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	
 
 	
+	//@SuppressWarnings("unchecked")
 	public <E> E[] toArray(E[] a) {
 		if (isEmpty()) {
 			for (int i = 0; i<a.length; i++) {
@@ -102,6 +106,8 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 			Iterator itr = iterator();
 			while(itr.hasNext()) {
 				outArr[position] = (E) itr.next();
+				position+=1;
+				
 			}
 		    return outArr;
 		}
@@ -142,9 +148,13 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	}
 
 	
+	
 	public boolean addAll(Collection<? extends E> c) { 
 		
-		return false;
+		//for(int i = 0; i < c.size(); i++) {
+			
+		//}
+		return true;
 	}
 
 	//optional
@@ -169,7 +179,9 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 		
 		
 	}
-
+	
+	
+	//passed all tests
 	@Override
 	public Iterator<E> iterator() {
 		// TODO Auto-generated method stub

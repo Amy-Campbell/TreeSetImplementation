@@ -28,19 +28,7 @@ public class Main {
 	  nodes2.add(1);
 	  nodes2.add(2);
 	  nodes2.add(5);
-	System.out.println(nodes.getClass());
-	System.out.println(nodes.getClass().isInstance(nodes2));
-	if (nodes.equals(nodes2)) {
-		System.out.println("same class");
-	}
-	else {
-		System.out.println("not same class");
-	}
-	System.out.println(nodes.equals(nodes2));
-	 
-	  
-	  System.out.println(nodes.contains(0));
-	  System.out.println(nodes2.contains(0));
+	System.out.println(nodes.toArray()[0]);
 	  
 	  
 	  
