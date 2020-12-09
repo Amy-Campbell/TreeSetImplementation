@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 import java.lang.reflect.Array;
 
-public class TreeSet<E extends Comparable<E>> extends AVLTree<E> implements Iterable<E>{
+public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	
 	AVLTree<E> tree = new AVLTree<>();
 
@@ -148,12 +148,12 @@ public class TreeSet<E extends Comparable<E>> extends AVLTree<E> implements Iter
 	}
 
 	
-	
+	@SuppressWarnings("unchecked")
 	public boolean addAll(Collection<? extends E> c) { 
-		
-		//for(int i = 0; i < c.size(); i++) {
-			
-		//}
+		Object[] arr = c.toArray();
+		for(int i = 0; i < arr.length; i++) {
+			add((E)(arr[i]));
+		}
 		return true;
 	}
 
