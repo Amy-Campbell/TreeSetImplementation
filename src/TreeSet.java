@@ -14,10 +14,7 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	public TreeSet() {
 		super();
 	}
-	public TreeSet(E[] objects) {
-		super(objects);
-	}
-
+	
 	//passed all tests
 	public int size() {
 		return tree.getSize();
