@@ -1,5 +1,6 @@
 
 
+import java.util.AbstractSet;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -7,7 +8,7 @@ import java.util.Iterator;
 
 import java.lang.reflect.Array;
 
-public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
+public class TreeSet<E extends Comparable<E>> extends AbstractSet<E> implements Iterable<E>{
 	
 	AVLTree<E> tree = new AVLTree<>();
 
@@ -85,7 +86,7 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	
 
 	
-	//@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public <E> E[] toArray(E[] a) {
 		if (isEmpty()) {
 			for (int i = 0; i<a.length; i++) {
@@ -135,37 +136,82 @@ public class TreeSet<E extends Comparable<E>> implements Iterable<E>{
 	//passed all tests
 	public boolean remove(E e) {
 		// TODO Auto-generated method stub
-		return tree.delete(e);
+		if (tree.search(e)) {
+			return tree.delete(e);
+		}
+		else {
+			return false;
+		}
 	}
 
 	
 	public boolean containsAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean allContained = true;
+		Object[] arr = c.toArray();
+		if(arr.length == 0) {
+			return false;
+		}
+		else {
+			for(int i = 0; i < arr.length; i++) {
+				allContained = contains((E)arr[i]);
+			}
+			return allContained;
+		}
+		
 	}
 
 	
 	@SuppressWarnings("unchecked")
 	public boolean addAll(Collection<? extends E> c) { 
+		boolean allAdded = true;
 		Object[] arr = c.toArray();
 		for(int i = 0; i < arr.length; i++) {
-			add((E)(arr[i]));
+			allAdded = add((E)(arr[i]));
 		}
-		return true;
+		return allAdded;
 	}
 
 	//optional
 	
-	public boolean retainAll(Collection c) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean retainAll(Collection<?> c) {
+		Iterator<E> itr = iterator();
+		boolean successful = false;
+		E element = null;
+		if (c.size() == 0) {
+			clear();
+			return true;
+		}
+		else {
+			while(itr.hasNext()) {
+				element = itr.next();
+				if(!c.contains(element)) {
+					successful = remove(element);
+				}
+				
+			}
+			return successful;
+		}
 	}
 
 	//optional
 	
 	
 	public boolean removeAll(Collection<?> c) {
-		return false;
+		boolean allRemoved = true;
+		Object[] arr = c.toArray();
+		if(arr.length == 0) {
+			return false;
+		}
+		else {
+			for(int i = 0; i < arr.length; i++) {
+				if(!tree.search((E)(arr[i]))) {
+					allRemoved = false;
+				}
+				allRemoved = remove((E)(arr[i]));
+			}
+			return allRemoved;
+		}
+		
 	}
 
 	//optional

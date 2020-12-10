@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-// to be replaced by your own implementation of TreeSet
 
 /**
  * test cases related to the addAll() method
@@ -13,13 +12,16 @@ import org.junit.jupiter.api.Test;
  */
 class TestAddAll {
 
-	TreeSet<Patient> ps, ps1to10, ps1to20, ps11to25;
+	TreeSet<Patient> ps = new TreeSet<Patient>();
+	TreeSet<Patient> ps1to10 = new TreeSet<Patient>();
+	TreeSet<Patient>  ps1to20 = new TreeSet<Patient>();
+	TreeSet<Patient> ps11to25 = new TreeSet<Patient>();
 	TreeSet<String> ss, ss1to10, ss1to20, ss11to25;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		ps = new TreeSet<Patient>();
-		ps1to10 = new TreeSet<Patient>();
+		
+		
 		ps1to20 = new TreeSet<Patient>();
 		ps11to25 = new TreeSet<Patient>();
 
