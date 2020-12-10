@@ -1,11 +1,13 @@
 
 
 /**
- * ThomasWilliamson #588206
+ * 
  * This class provides the implementation of a tree node
  * 
  * The codes is copied from:
- * http://www.java2s.com/ref/java/java-algorithms-binary-search-tree-animation.html
+ * http://www.java2s.com/ref/java/java-algorithms-binary-search-tree-animation.html\
+ * 
+ * @author Amy Campbell (611919), Thomas Williamson (588206), Donat Matthys, Yicheng Zhang
  *
  * @param <E>
  */

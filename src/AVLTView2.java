@@ -2,6 +2,8 @@
  * This class is responsible for the view - generating the generating the graphics to display a tree
  * 
  * The codes is copied from: http://www.java2s.com/ref/java/java-algorithms-binary-search-tree-animation.html 
+ * 
+ * @author Amy Campbell (611919), Thomas Williamson (588206), Donat Matthys, Yicheng Zhang
  */
 
 

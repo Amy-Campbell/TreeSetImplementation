@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
  * Provides implementation for a set using a self-balancing tree as the
  * underlying structure
  * 
- * @author Amy Campbell, Thomas Williamson, Donat Matthys, Yicheng Zhang
+ * @author Amy Campbell (611919), Thomas Williamson (588206), Donat Matthys, Yicheng Zhang
  *
  */
 

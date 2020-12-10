@@ -1,6 +1,8 @@
 /**
- * ThomasWilliamson #588206
+ * 
  * This class is responsible for the view - generating the generating the graphics to display a tree
+ * 
+ * @author Amy Campbell (611919), Thomas Williamson (588206), Donat Matthys, Yicheng Zhang
  * 
  * The codes is copied from: http://www.java2s.com/ref/java/java-algorithms-binary-search-tree-animation.html 
  */

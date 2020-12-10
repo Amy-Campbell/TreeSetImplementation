@@ -3,6 +3,7 @@ import java.util.Collection;
 
 /**
  * This class was used to test methods in TreeSet class
+ *  @author Amy Campbell (611919), Thomas Williamson (588206), Donat Matthys, Yicheng Zhang
  */
 public class Main {
   

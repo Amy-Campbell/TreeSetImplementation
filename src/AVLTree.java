@@ -2,6 +2,12 @@
 
 import java.util.List;
 
+/**
+ * Tree implementation
+ * 
+ * @author Amy Campbell (611919), Thomas Williamson (588206), Donat Matthys, Yicheng Zhang
+ *
+ */
 
 class AVLTree<E extends Comparable<E>> implements Tree<E> {
 	  protected AVLTreeNode<E> root;
