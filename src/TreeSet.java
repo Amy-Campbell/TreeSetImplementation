@@ -117,13 +117,13 @@ public class TreeSet<E extends Comparable<E>> extends AbstractSet<E> implements 
 			outArr = (E[]) Array.newInstance(tree.root.getClass(), size()); // create an array of generic type
 
 			int position = 0;
-			Iterator itr = iterator();
+			Iterator itr = this.iterator();
 			while (itr.hasNext()) {
-				outArr[position] = (E) itr.next();
+				a[position] = (E) itr.next();
 				position += 1;
 
 			}
-			return outArr;
+			return a;
 		}
 	}
 
